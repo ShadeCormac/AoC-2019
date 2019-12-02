@@ -3,16 +3,20 @@ def get_input():
         return file.readline().split(',')
 
 def compute(array, pos):
-    print(pos)
-    if array[pos] == 99:
-        return 1
+    if array[pos] == str(99):
+        return 0
     else:
-        array[pos + 3] = array[pos + 1] + array[pos + 2]
+        array[pos + 3] = int(array[pos + 1]) + int(array[pos + 2])
+        print(array[pos +3])
         return 4
 
-input = get_input()
-pos = 0
-while pos <= input.__len__():
-    pos += compute(input, pos)
+list = get_input()
 
-print(input[0])
+pos = 0
+while pos <= list.__len__():
+    result = compute(list, pos)
+    if result == 0:
+        break
+    else: pos += result
+
+print(list[0])
